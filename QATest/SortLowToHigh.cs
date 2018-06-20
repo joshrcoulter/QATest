@@ -40,6 +40,8 @@ namespace QATest
 
                 //Collect the prices
                 IList<IWebElement> prices = driver.FindElements(By.XPath("//*[@data-testid='gcc-product-discount-price']"));
+                IList<IWebElement> brands = driver.FindElements(By.XPath("//*[@data-testid='gcc-product-brand']"));
+                IList<IWebElement> names = driver.FindElements(By.XPath("//*[@data-testid='gcc-product-name']"));
 
                 log.Info("BEGIN");
 
@@ -53,9 +55,9 @@ namespace QATest
                     price2 = decimal.Parse(prices[i + 1].Text, NumberStyles.Currency);
 
                     if ((i + 1) < prices.Count && (price1 <= price2)) //success
-                        log.Info("Price of item " + (i + 1) + " [$" + price1 + "] is less than or equal to item " + (i + 2) + " [$" + price2 + "]");
+                        log.Info("Price of " + brands[i].Text + " " + names[i].Text + " [$" + price1 + "] is less than or equal to " + brands[i + 1].Text + " " + names[i + 1].Text + " " + "[$" + price2 + "]");
                     else //fail
-                        log.Error("Price of item " + (i + 1) + " [$" + price1 + "] is not less than or equal to item " + (i + 2) + " [$" + price2 + "]");
+                        log.Error("Price of " + brands[i].Text + " " + names[i].Text + " [$" + price1 + "] is not less than or equal to " + brands[i + 1].Text + " " + names[i + 1].Text + " " + "[$" + price2 + "]");
                 }
 
                 driver.Quit();
