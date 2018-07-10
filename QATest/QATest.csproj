@@ -58,6 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjectRepository\Blackout.cs" />
+    <Compile Include="ObjectRepository\HomePage.cs" />
     <Compile Include="SortLowToHigh.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
